@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        th {
+            font-weight: bold;
+            width: 30px;
+            background-color: lightgray;
+        }
+    
+        tfoot {
+            font-weight: bold;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <title>React Table</title>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function App() {
+                const [data, setData] = React.useState([
+                    ['Onboarding Call'], ['Google Search Console Access'], ['Google Analytics Access'],
+                    ['Website Access'], ['Technical Audit'], ['Anchor Text and Semantic Analysis'],
+                    ['Competitor Analysis'],['Anchor Text / URL Mapping'], ['Google Data Studio Report'],
+                    ['On Page Optimization'],['Site Level Optimization'],['Content Creation'],['Content Publishing'],
+                    ['Premium Press Release'],['Authority Niche Placements'],['Review Management'],['Index Links'],
+                    ['Video Recap'],['Total']          
+                ]);
+
+                const handleChange = (event, rowIndex, cellIndex) => {
+                        const newData = [...data];
+                        newData[rowIndex][cellIndex] = event.target.textContent;
+                        //Here is the Updated Data for particular cell, can be used to make API call
+                        console.log('API call with updated cell value : ',newData[rowIndex][cellIndex]);
+                }
+
+                return <table>
+                <thead>
+                    <tr>
+                        <th contentEditable={true}>Month 1</th>
+                        <th contentEditable={true}></th>
+                        <th contentEditable={true}></th>
+                        <th contentEditable={true}></th>
+                        <th contentEditable={true}></th>
+                        <th contentEditable={true}></th>
+                        <th contentEditable={true}></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                                {row.map((cell, cellIndex) => (
+                                    <th
+                                        key={cellIndex}
+                                        contentEditable
+                                        onBlur={(event) => handleChange(event, rowIndex + 1, cellIndex)}
+                                    >
+                                        {cell}
+                                    </th>
+                                    
+                                ))}
+                                <td contentEditable={true}></td>
+                                <td contentEditable={true}></td>
+                                <td contentEditable={true}></td>
+                                <td contentEditable={true}></td>
+                                <td contentEditable={true}></td>
+                                <td contentEditable={true}></td>
+                            </tr>
+                        ))}
+
+                </tbody>
+            </table>
+        }
+        const domNode = document.getElementById('root');
+        const root = ReactDOM.createRoot(domNode);
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
