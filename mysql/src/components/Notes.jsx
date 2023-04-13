@@ -36,7 +36,7 @@ export const Notes = () => {
                     <Heading size='md'> {e}</Heading>
                     </CardHeader>
                     <CardBody>
-                    <Text>View a summary of all your note over here.</Text>
+                    <Text> summary of all your note</Text>
                     </CardBody>
                     <CardFooter flexDirection='row-reverse'>
                         <DeleteIcon onClick={() => handleDelete(e)}/>
