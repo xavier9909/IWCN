@@ -1,0 +1,9 @@
+.redtext {
+  text-align: center;
+  text-decoration: underline;
+}
+
+tr > td {
+  min-width: 150px;
+  padding: 5px;
+}
